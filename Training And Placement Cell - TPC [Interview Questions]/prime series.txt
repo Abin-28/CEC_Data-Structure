@@ -1,0 +1,30 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int n,c,k=2;
+    printf("Enter the number:");
+    scanf("%d",&n);
+    while(k<=n)
+    {   c=0;
+        for(int i=2;i<k;i++) //2 will be printed because this loop will not execute i<k
+        {
+            if(k%i==0)
+            {   c=1;
+                break;
+            }
+        }
+        if(c==0)
+        {
+            printf("%d ",k);
+        }
+        k++;
+    }
+    
+
+    return 0;
+}
+
+Output:
+Enter the number:20
+2 3 5 7 11 13 17 19 

@@ -1,0 +1,25 @@
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int n,j;
+    printf("enter limit:");
+    scanf("%d",&n);
+    for(int i=n;i>0;i--)
+    {for( j=1;j<=i;j++)
+    {printf(" ");}
+    for(int k=j;k<=n+1;k++)
+    {printf("*");}
+    printf("\n");
+    }
+    
+}
+
+output:
+enter limit:5
+     *
+    **
+   ***
+  ****
+ *****

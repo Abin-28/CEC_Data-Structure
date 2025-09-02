@@ -1,0 +1,130 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+
+struct ListNode{
+    int val;
+    struct ListNode *next;
+ };
+ 
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
+    int d1,d2, j,digit,carry;
+    printf("Enter the Number of Digits for the First Number: ");
+    scanf("%d", &d1);
+
+    // Create a head pointer to point to the first node
+    struct ListNode* head1 = NULL;
+
+    for (int i = 0; i < d1; i++) {
+        printf("Enter %dth place Digit: ", i + 1);
+        scanf("%d", &j);
+
+        // Allocate memory for a new ListNode
+        struct ListNode* l1 = malloc(sizeof(struct ListNode));
+        if (l1 == NULL) {
+            printf("Memory allocation failed.\n");
+            // Handle memory allocation failure
+            // You might want to free allocated memory before exiting
+            return NULL;
+        }
+
+        // Assign the value and update the next pointer
+        l1->val = j;
+        l1->next = head1;
+        head1 = l1;
+    }
+    printf("Enter the Number of Digits for the First Number: ");
+    scanf("%d", &d2);
+    
+    struct ListNode* head2 = NULL;
+     for (int i = 0; i < d2; i++) {
+        printf("Enter %dth place Digit: ", i + 1);
+        scanf("%d", &j);
+
+        // Allocate memory for a new ListNode
+        struct ListNode* l2 = malloc(sizeof(struct ListNode));
+        if (l2 == NULL) {
+            printf("Memory allocation failed.\n");
+            // Handle memory allocation failure
+            // You might want to free allocated memory before exiting
+            return NULL;
+        }
+
+        // Assign the value and update the next pointer
+        l2->val = j;
+        l2->next = head2;
+        head2 = l2;
+    }
+
+    
+    struct ListNode* temp1 = head1;
+    struct ListNode* temp2 = head2;
+
+    while (temp1 != NULL) {
+        
+        
+        temp1->val=temp1->val+temp2->val;// Changed `temp->data` to `temp->val`
+        digit=temp1->val;
+        carry=digit/10;
+        printf("%d",carry);
+        if(carry==1&&temp1->next!=NULL)
+        {digit=digit%10+carry;
+        temp1->val=digit;}
+        else 
+        {
+            digit=digit%10;
+            temp1->val=digit;
+        }
+        temp1 = temp1->next;
+        temp2 = temp2->next;
+    }
+    if(carry==1)
+    {
+        struct ListNode* l1 = malloc(sizeof(struct ListNode));
+        if (l1 == NULL) {
+            printf("Memory allocation failed.\n");
+            // Handle memory allocation failure
+            // You might want to free allocated memory before exiting
+            return NULL;
+        }
+
+        // Assign the value and update the next pointer
+        l1->val = carry;
+        l1->next = head1;
+        head1 = l1;
+    }
+        
+    
+  
+    // Print the list
+    temp1 = head1;
+    printf("\nList elements are:\n");
+    while (temp1 != NULL) {
+        printf("%d --->", temp1->val);  // Changed `temp->data` to `temp->val`
+        temp1 = temp1->next;
+    }
+    printf("NULL\n");  // Print NULL at the end
+    // You might want to free the allocated memory for the linked list
+
+    return head1,head2;  // Return the head of the linked list
+}
+
+int main() {
+    // Create linked lists representing the two numbers
+    struct ListNode* num1 = NULL;
+    struct ListNode* num2 = NULL;
+
+    // Call the addTwoNumbers function and store the result in a new linked list
+    struct ListNode* result = addTwoNumbers(num1, num2);
+
+    // Print the result or perform further operations with the result
+
+    // Don't forget to free dynamically allocated memory when you're done using it
+
+    return 0;
+}
+
+
+
+
+

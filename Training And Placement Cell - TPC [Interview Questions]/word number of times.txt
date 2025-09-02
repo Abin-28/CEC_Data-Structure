@@ -1,0 +1,45 @@
+#include<string.h>
+#include <stdio.h>
+
+int main()
+{
+    char c[30],s[30];
+    int num=0;
+    int v=0;
+    printf("Enter the String:");
+    scanf("%s",c);
+    for(char i=0;c[i];i++)
+    {if((c[i]>96)&&(c[i]<123)) 
+    {
+        s[v++]= c[i]; //in this we are copying char of c to s
+        
+    }
+    else if((c[i]>=48)&&(c[i]<=57))
+    {
+          num=num*10+c[i]-48;
+          if((c[i+1]>=97&&c[i+1]<=122)||c[i+1]=='\0')  
+          {for(int i=0;i<num;i++)
+            {
+                //for(int j=0;s[i];i++)
+                 printf("%s\n",s);
+            }
+           num=0;
+           v=0;
+           for(int j=0;s[j];j++) //inorder to clear the string
+           s[j]= '\0';
+                 
+              
+          } 
+    }
+    }
+    
+    
+}
+Output:
+
+Enter the String:mec2aw3
+mec
+mec
+aw
+aw
+aw
